@@ -1,5 +1,92 @@
-* Basic Emacs bootstraping
+* Basic Emacs bootstrap
 
+#+ATTR_HTML: :width 75% :height 75%
 [[file:README.org.res/emacs.png]]
 
-It sets up a basic Emacs [[https://www.gnu.org/software/emacs/][Emacs]] config ready for your own customizations.
+Set up a basic [[https://www.gnu.org/software/emacs/][Emacs]] config ready for further customizations.
+
+* Backing up
+
+*Note:* You'll need to remove (back up) your previous config.
+
+*** .emacs backup
+
+If you have an .emacs file. Back up with:
+
+#+begin_src shell
+  mv ~/.emacs .emacs.bak
+#+end_src
+
+
+*** .emacs.d backup
+
+If you have an .emacs.d directory. Back up with:
+
+#+begin_src shell
+  mv ~/.emacs.d .emacs.d.bak
+#+end_src
+
+* Clone repo
+
+#+begin_src shell
+  git clone https://github.com/xenodium/emacs-bootstrap.git
+#+end_src
+
+* Install
+:PROPERTIES:
+:CUSTOM_ID: install
+:END:
+
+#+begin_src shell
+  cd emacs-bootstrap
+  make
+#+end_src
+
+* Open Emacs (macOS)
+:PROPERTIES:
+:CUSTOM_ID: open-emacs-macos
+:END:
+
+#+begin_src shell
+  open /Applications/Emacs.app
+#+end_src
+
+* Organization
+
+*** Core config
+
+init.el loads the core config and defers loading all other customizations found in the *features* directory.
+
+*** Your customizations
+***** Create a feature file
+
+For example:
+
+features/fe-python.el
+
+#+begin_src emacs-lisp
+  (use-package python
+    :custom
+    (python-indent-guess-indent-offset-verbose nil))
+#+end_src
+
+***** Add to features/fe-features.el
+
+Edit features/fe-features.el and add:
+
+For example:
+
+#+begin_src emacs-lisp
+  (ar/init--idle-load "~/.emacs.d/features/fe-python")
+#+end_src
+
+***** Install changes
+
+See [[#install][Install]].
+
+***** Reopen Emacs
+
+See [[#open-emacs-macos][Open Emacs (macOS)]].
+
+
+* Happy Emacsing
