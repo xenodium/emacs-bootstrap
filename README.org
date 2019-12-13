@@ -1,0 +1,5 @@
+* Basic Emacs bootstraping
+
+[[file:README.org.res/emacs.png]]
+
+It sets up a basic Emacs [[https://www.gnu.org/software/emacs/][Emacs]] config ready for your own customizations.
